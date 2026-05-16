@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BENJELLOUN LEGACY 👑</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --gold: #C9A84C;
+      --gold-light: #F0D080;
+      --dark: #1A1008;
+      --cream: #FDF6E3;
+      --red: #8B1A1A;
+      --text: #2C1810;
+      --card-bg: #FFFDF7;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Lato', sans-serif;
+      background-color: var(--dark);
+      color: var(--cream);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+      background: radial-gradient(ellipse at center, #2C1A08 0%, #1A1008 60%, #0A0804 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: 
+        radial-gradient(circle at 20% 20%, rgba(201,168,76,0.08) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(139,26,26,0.08) 0%, transparent 50%);
+    }
+
+    .crown {
+      font-size: 5rem;
+      margin-bottom: 1rem;
+      animation: float 3s ease-in-out infinite;
+      position: relative;
+      z-index: 1;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
+    }
+
+    .hero-eyebrow {
+      font-family: 'Lato', sans-serif;
+      font-weight: 300;
+      letter-spacing: 0.4em;
+      font-size: 0.75rem;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3rem, 10vw, 7rem);
+      font-weight: 900;
+      line-height: 1;
+      color: var(--gold);
+      text-shadow: 0 0 60px rgba(201,168,76,0.3);
+      position: relative;
+      z-index: 1;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-subtitle {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: clamp(1.2rem, 3vw, 2rem);
+      color: var(--cream);
+      opacity: 0.7;
+      margin-bottom: 2rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-desc {
+      max-width: 600px;
+      font-size: 1rem;
+      color: #C4A882;
+      line-height: 1.8;
+      margin-bottom: 3rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .divider {
+      width: 120px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      margin: 1.5rem auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .btn-scroll {
+      display: inline-block;
+      padding: 1rem 2.5rem;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      font-family: 'Lato', sans-serif;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      cursor: pointer;
+      background: transparent;
+      transition: all 0.3s;
+      position: relative;
+      z-index: 1;
+      text-decoration: none;
+    }
+
+    .btn-scroll:hover {
+      background: var(--gold);
+      color: var(--dark);
+    }
+
+    /* ===== GALLERY ===== */
+    .gallery-section {
+      padding: 5rem 1.5rem;
+      background: var(--cream);
+      color: var(--text);
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .section-eyebrow {
+      font-weight: 300;
+      letter-spacing: 0.4em;
+      font-size: 0.7rem;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 900;
+      color: var(--text);
+      line-height: 1.1;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 2.5rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* ===== CARD ===== */
+    .card {
+      background: var(--card-bg);
+      border-radius: 2px;
+      overflow: hidden;
+      box-shadow: 0 4px 30px rgba(0,0,0,0.08);
+      transition: transform 0.3s, box-shadow 0.3s;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 50px rgba(0,0,0,0.15);
+    }
+
+    .card-img-wrap {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      background: #1A1008;
+    }
+
+    .card-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s;
+      filter: sepia(5%);
+    }
+
+    .card:hover .card-img-wrap img {
+      transform: scale(1.04);
+    }
+
+    /* Photo manquante fallback */
+    .card-img-wrap.no-photo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #1A1008, #2C1A08);
+    }
+
+    .card-img-wrap.no-photo .photo-placeholder {
+      font-size: 4rem;
+      opacity: 0.4;
+    }
+
+    .card-badge {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      background: var(--gold);
+      color: var(--dark);
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.7rem;
+    }
+
+    .card-body {
+      padding: 1.75rem;
+      border-top: 3px solid var(--gold);
+    }
+
+    .card-location {
+      font-size: 0.7rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+    }
+
+    .card-quote {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: var(--text);
+      position: relative;
+      padding-left: 1.2rem;
+    }
+
+    .card-quote::before {
+      content: '"';
+      position: absolute;
+      left: 0;
+      top: -0.2rem;
+      font-size: 2rem;
+      color: var(--gold);
+      font-style: normal;
+      line-height: 1;
+    }
+
+    /* ===== LIGHTBOX ===== */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(10,8,4,0.97);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      flex-direction: column;
+    }
+
+    .lightbox.active {
+      display: flex;
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .lightbox-close {
+      position: fixed;
+      top: 1.5rem;
+      right: 1.5rem;
+      background: none;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      font-size: 1.2rem;
+      cursor: pointer;
+      padding: 0.5rem 0.9rem;
+      z-index: 1001;
+      transition: all 0.2s;
+    }
+
+    .lightbox-close:hover {
+      background: var(--gold);
+      color: var(--dark);
+    }
+
+    .lightbox-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      max-width: 800px;
+      width: 100%;
+    }
+
+    .lightbox-img {
+      max-height: 55vh;
+      max-width: 100%;
+      object-fit: contain;
+      border: 1px solid rgba(201,168,76,0.2);
+      margin-bottom: 2rem;
+    }
+
+    .lightbox-location {
+      font-size: 0.7rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+
+    .lightbox-quote {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+      color: var(--cream);
+      text-align: center;
+      line-height: 1.8;
+      max-width: 650px;
+      position: relative;
+      padding: 0 2rem;
+    }
+
+    .lightbox-quote::before,
+    .lightbox-quote::after {
+      content: '"';
+      position: absolute;
+      font-size: 4rem;
+      color: var(--gold);
+      opacity: 0.4;
+      font-style: normal;
+      line-height: 1;
+    }
+
+    .lightbox-quote::before { left: 0; top: -0.5rem; }
+    .lightbox-quote::after { content: '"'; right: 0; bottom: -1rem; }
+
+    .lightbox-nav {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .lightbox-nav button {
+      background: none;
+      border: 1px solid rgba(201,168,76,0.4);
+      color: var(--gold);
+      padding: 0.6rem 1.5rem;
+      cursor: pointer;
+      font-family: 'Lato', sans-serif;
+      letter-spacing: 0.1em;
+      font-size: 0.85rem;
+      transition: all 0.2s;
+    }
+
+    .lightbox-nav button:hover {
+      background: var(--gold);
+      color: var(--dark);
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--dark);
+      text-align: center;
+      padding: 3rem 1.5rem;
+      border-top: 1px solid rgba(201,168,76,0.2);
+    }
+
+    footer .crown-small { font-size: 2rem; margin-bottom: 1rem; }
+
+    footer p {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      color: #C4A882;
+      font-size: 0.95rem;
+      margin-bottom: 0.5rem;
+    }
+
+    footer small {
+      color: rgba(196,168,130,0.4);
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 600px) {
+      .gallery-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        padding: 0 0.5rem;
+      }
+      .hero-title { font-size: 3.5rem; }
+      .lightbox-img { max-height: 40vh; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="crown">👑</div>
+    <div class="hero-eyebrow">Depuis toujours &mdash; Pour toujours</div>
+    <h1 class="hero-title">BENJELLOUN</h1>
+    <p class="hero-subtitle">Legacy</p>
+    <div class="divider"></div>
+    <p class="hero-desc">
+      Une famille. Des sardines. Un couscous géant. Des selfies impromptus. 
+      Des philosophes de café. Des économes légendaires.<br>
+      Et des ancêtres qui comptaient leurs œufs.<br><br>
+      Bienvenue dans la saga.
+    </p>
+    <a href="#gallery" class="btn-scroll">Découvrir la saga</a>
+  </section>
+
+  <!-- GALLERY -->
+  <section class="gallery-section" id="gallery">
+    <div class="section-header">
+      <div class="section-eyebrow">L'album officiel</div>
+      <h2 class="section-title">Les Chroniques<br>de la Famille</h2>
+      <div class="divider" style="background: linear-gradient(90deg, transparent, #C9A84C, transparent); height:2px; width:120px; margin: 1rem auto 0;"></div>
+    </div>
+
+    <div class="gallery-grid" id="galleryGrid">
+      <!-- Cards générées par JS -->
+    </div>
+  </section>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+    <div class="lightbox-inner">
+      <img src="" alt="" class="lightbox-img" id="lbImg" />
+      <div class="lightbox-location" id="lbLocation"></div>
+      <p class="lightbox-quote" id="lbQuote"></p>
+      <div class="lightbox-nav">
+        <button onclick="navigate(-1)">← Précédent</button>
+        <button onclick="navigate(1)">Suivant →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="crown-small">👑</div>
+    <p>Il n'y a pas de récompenses ou de punitions.</p>
+    <p>Il n'y a que les conséquences.</p>
+    <br>
+    <small>Benjelloun Legacy &mdash; Tous droits réservés, surtout celui de ne pas payer l'addition &mdash; 🧿</small>
+  </footer>
+
+  <script>
+    const PHOTOS = [
+      {
+        id: 1,
+        file: "photos/theatre.jpg",
+        emoji: "🎭",
+        lieu: "Le Théâtre — Soirée Culturelle",
+        quote: "On est les BENJELLOUN, on est blindés !!!!! Salut, ça va les clochards — enfin pardon — toujours pas d'argent ? Nous on va au théâtre !"
+      },
+      {
+        id: 2,
+        file: "photos/ikea.jpg",
+        emoji: "🛋️",
+        lieu: "IKEA — Rayon Literie",
+        quote: "J'ai trop d'argent, je suis blindé !!!!! Moi et toi, on est comme des frères, je t'aime bien ! Mais je t'aiderai jamais à faire un business, jamais je t'aiderai. Allez, salut, bonne journée !!!!!"
+      },
+      {
+        id: 3,
+        file: "photos/sardines.jpg",
+        emoji: "🐟",
+        lieu: "Restaurant en plein air — Déjeuner Sardines",
+        quote: "Chihab, salut ça va ? C'est trop agréable de passer un moment avec toi, t'as l'air plus content que d'habitude ? Quelque chose s'est passé ? Ben normal, je suis au restaurant, je mange et je ne paie pas !!!!!"
+      },
+      {
+        id: 4,
+        file: "photos/canape.jpg",
+        emoji: "🛋️",
+        lieu: "Le Salon — Canapé Familial",
+        quote: "Kenza sourit. Amal a l'air de quelqu'un qui vient d'apprendre qu'il doit payer l'addition."
+      },
+      {
+        id: 5,
+        file: "photos/ancetres.jpg",
+        emoji: "🖤",
+        lieu: "Les Origines — Photo d'Archives",
+        quote: "À l'origine de tout. Grand-mère met 6 œufs dans la casserole. Grand-père lève les yeux et dit : « Touria, c'est ton argent ????? Mets 10 œufs !!!!! » L'ADN était là depuis le début."
+      },
+      {
+        id: 6,
+        file: "photos/couscous.jpg",
+        emoji: "🫕",
+        lieu: "Le Grand Couscous — Scène Familiale",
+        quote: "Mange ma fille ! — Désolé chérie, j'oublie toujours. L'homme à gauche lève la tête : « Mange ma femme — euh... ma fille. Pardon. » C'est les 25 ans de différence. Ou le couscous. Probablement les deux."
+      },
+      {
+        id: 7,
+        file: "photos/trois_femmes.jpg",
+        emoji: "🫕",
+        lieu: "Chez FatimaZahra — Le Grand Repas",
+        quote: "Miam miam c'est trop bon ! Dis donc... ta fille FatimaZahra, elle en a pas marre de cuisiner pour tout le monde ? La femme au foulard pose sa fourchette, les regarde et dit : « Vous deux... vous n'aimez jamais recevoir personne !!!!! »"
+      },
+      {
+        id: 8,
+        file: "photos/restaurant_mosaique.jpg",
+        emoji: "🏛️",
+        lieu: "Restaurant Traditionnel — Déjeuner",
+        quote: "Déjeuner avec l'ami de la famille. Tout le monde sourit. Tout le monde est poli. Surtout ma tante... qui a oublié de raccrocher son téléphone une fois. Il a tout entendu. Ils sont toujours amis. C'est ça les Benjelloun."
+      },
+      {
+        id: 9,
+        file: "photos/paris_cafe.jpg",
+        emoji: "☕",
+        lieu: "Paris — Terrasse de Café",
+        quote: "Najat demande pourquoi Yasmina ne part pas à Dubai. Assia pose sa tasse : « Chacun chez soi et les vaches seront bien gardées. » — Mais pourquoi tu dis ça ???? — « Najat... il n'y a pas de récompenses ou de punitions. Il n'y a que les conséquences. Pose-toi les bonnes questions. » Long silence. Le café refroidit."
+      },
+      {
+        id: 10,
+        file: "photos/omar_najat.jpg",
+        emoji: "🕯️",
+        lieu: "Chez Omar — Dîner aux Bougies",
+        quote: "Omar. Gentil, généreux, réussi. Il se la pète un peu. Sa mère Najat refuse d'en parler — par superstition, par prudence, par amour. Table impeccable, bougies allumées, petits plats dans les grands. Quelqu'un dans la famille pense : « il se la pète un peu. » Tout le monde pense ça. Personne ne le dit. Et la femme qu'il serre dans ses bras tendrement... c'est sa maman. Inch'allah le mauvais œil ne lit pas les sites de famille. 🧿"
+      }
+    ];
+
+    let currentIndex = 0;
+
+    // Génère les cartes
+    function buildGallery() {
+      const grid = document.getElementById('galleryGrid');
+      PHOTOS.forEach((p, i) => {
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.onclick = () => openLightbox(i);
+
+        const imgSection = `
+          <div class="card-img-wrap" id="wrap-${i}">
+            <img src="${p.file}" alt="${p.lieu}"
+              onerror="handleImgError(${i})"
+              loading="lazy" />
+            <div class="card-badge">${p.emoji} N°${p.id}</div>
+          </div>`;
+
+        const body = `
+          <div class="card-body">
+            <div class="card-location">${p.lieu}</div>
+            <p class="card-quote">${p.quote}</p>
+          </div>`;
+
+        card.innerHTML = imgSection + body;
+        grid.appendChild(card);
+      });
+    }
+
+    function handleImgError(i) {
+      const wrap = document.getElementById('wrap-' + i);
+      if (!wrap) return;
+      wrap.classList.add('no-photo');
+      wrap.innerHTML = `
+        <div class="photo-placeholder">${PHOTOS[i].emoji}</div>
+        <div class="card-badge">${PHOTOS[i].emoji} N°${PHOTOS[i].id}</div>`;
+    }
+
+    // Lightbox
+    function openLightbox(index) {
+      currentIndex = index;
+      updateLightbox();
+      document.getElementById('lightbox').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    function updateLightbox() {
+      const p = PHOTOS[currentIndex];
+      const img = document.getElementById('lbImg');
+      img.src = p.file;
+      img.onerror = () => { img.style.display = 'none'; };
+      img.onload = () => { img.style.display = 'block'; };
+      document.getElementById('lbLocation').textContent = p.lieu;
+      document.getElementById('lbQuote').textContent = p.quote;
+    }
+
+    function navigate(dir) {
+      currentIndex = (currentIndex + dir + PHOTOS.length) % PHOTOS.length;
+      updateLightbox();
+    }
+
+    // Fermer lightbox avec Escape
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') navigate(-1);
+      if (e.key === 'ArrowRight') navigate(1);
+    });
+
+    // Fermer en cliquant hors du contenu
+    document.getElementById('lightbox').addEventListener('click', function(e) {
+      if (e.target === this) closeLightbox();
+    });
+
+    // Smooth scroll
+    document.querySelector('.btn-scroll').addEventListener('click', function(e) {
+      e.preventDefault();
+      document.getElementById('gallery').scrollIntoView({ behavior: 'smooth' });
+    });
+
+    buildGallery();
+  </script>
+</body>
+</html>
